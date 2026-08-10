@@ -7921,12 +7921,11 @@ Epoch 20/20 | Test PSNR: 14.81 dB
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Discussion — $\beta$-VAE results (Tasks 1 &amp; 2: train models, compare PSNR vs. epochs)</strong></p>
+<p><strong>Discussion — beta-VAE results (Tasks 1 and 2)</strong></p>
 <ul>
-<li>Final-epoch test PSNR is <strong>inversely related to $\beta$</strong>, as expected: 17.64 dB ($\beta$=1) → 16.73 dB ($\beta$=2) → 15.88 dB ($\beta$=4) → 14.70 dB ($\beta$=10). A larger KL weight forces the posterior closer to the prior, which loses information the decoder needs for pixel-accurate reconstruction.</li>
-<li>All four runs improve every epoch, confirming the training loop converges rather than diverging in the 5-epoch budget; gains are largest early (epoch 1→2) and flatten by epoch 4-5, e.g. $\beta$=10 only gains ~0.06 dB in the final epoch.</li>
-<li>$\beta$=1 (standard, unweighted VAE) gives the best reconstruction PSNR in the sweep, which is why it is used as the representative $\beta$-VAE in Part C's cross-model comparison.</li>
-<li>Higher $\beta$ runs show slightly noisier epoch-to-epoch PSNR (e.g. $\beta$=4 dips then recovers), consistent with a stronger, more dominant KL gradient making optimization less smooth than the mostly-reconstruction-driven $\beta$=1 case.</li>
+<li>Final-epoch test PSNR is inversely related to beta, as expected: <strong>18.02 dB</strong> (beta=1), <strong>17.03 dB</strong> (beta=2), <strong>16.07 dB</strong> (beta=4), and <strong>14.81 dB</strong> (beta=10). A larger KL weight pushes the posterior closer to the prior and reduces the detail available for pixel-accurate reconstruction.</li>
+<li>The PSNR-vs-epoch figure at the end of this notebook is the authoritative convergence comparison for all 20 epochs.</li>
+<li>beta=1 has both the best reconstruction PSNR and the best standard Inception FID among the beta-VAE variants (200.98), so it is the appropriate beta-VAE representative for Part C.</li>
 </ul>
 </div>
 </div>
